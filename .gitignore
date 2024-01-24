@@ -1,0 +1,5 @@
+.env
+.vscode
+data/*
+osnet_x0_25_msmt17.pt
+models
