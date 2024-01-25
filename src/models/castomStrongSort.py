@@ -45,7 +45,18 @@ class CastomStrongSORT(StrongSORT):
                  mc_lambda=0.995,
                  ema_alpha=0.9
                 ):
-        super(StrongSORT, self).__init__(model_weights, device, fp16)
+        super().__init__(model_weights,
+                 device,
+                 fp16,
+                 max_dist=0.2,
+                 max_iou_dist=0.7,
+                 max_age=70,
+                 max_unmatched_preds=7,
+                 n_init=3,
+                 nn_budget=100,
+                 mc_lambda=0.995,
+                 ema_alpha=0.9
+                )
         
         self.model = ReIDDetectMultiBackend(weights=model_weights, device=device, fp16=fp16)
         
