@@ -4,3 +4,6 @@ data/*
 osnet_x0_25_msmt17.pt
 *.pt
 src/models/__pycache__
+*.mp4
+*.avi
+models/*

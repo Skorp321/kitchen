@@ -55,7 +55,7 @@ class ReIDDetectMultiBackend(nn.Module):
         self.fp16 &= self.pt or self.jit or self.engine  # FP16
         self.device = device
         self.nhwc = self.tflite  # activate bhwc --> bcwh
-
+        print(w)
         model_name = get_model_name(w)
 
         if w.suffix == ".pt":
@@ -191,7 +191,8 @@ class ReIDDetectMultiBackend(nn.Module):
         h, w = img.shape[:2]
         # dets are of different sizes so batch preprocessing is not possible
         for box in xyxys:
-            x1, y1, x2, y2 = box.astype('int')
+            box = box.cpu().numpy()
+            x1, y1, x2, y2, _, _ = box.astype('int')
             x1 = max(0, x1)
             y1 = max(0, y1)
             x2 = min(w - 1, x2)
